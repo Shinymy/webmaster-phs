@@ -27,6 +27,11 @@ def index():
     return render_template("index.html", app_data=app_data)
 
 
+@app.route("/overview")
+def overview():
+    return render_template("overview.html", app_data=app_data)
+
+
 @app.route("/about")
 def about():
     return render_template("about.html", app_data=app_data)
