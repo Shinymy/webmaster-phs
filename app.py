@@ -13,38 +13,35 @@ DEVELOPMENT_ENV = True
 app = Flask(__name__)
 
 app_data = {
-    "name": "Peter's Starter Template for a Flask Web App",
-    "description": "A basic Flask app using bootstrap for layout",
-    "author": "Peter Simeth",
-    "html_title": "Peter's Starter Template for a Flask Web App",
-    "project_name": "Starter Template",
-    "keywords": "flask, webapp, template, basic",
+    "name": "PHS Green Energy",
+    "description": "PHS Green Energy Page",
+    "author": "Edwin and Jacob",
+    "project_name": "PHS Green Energy",
+    "keywords": "flask, webapp, tsa",
 }
 
 
 @app.route("/")
 def index():
-    return render_template("index.html", app_data=app_data)
+    return render_template("index.html", app_data=app_data, title="Pelham High Green Energy")
 
 
 @app.route("/overview")
 def overview():
-    return render_template("overview.html", app_data=app_data)
+    return render_template("overview.html", app_data=app_data, title="Overview")
 
 
 @app.route("/about")
 def about():
-    return render_template("about.html", app_data=app_data)
+    return render_template("about.html", app_data=app_data, title="About")
 
+@app.route("/works_cited")
+def works_cited():
+    return render_template(f"works_cited.html", app_data=app_data, title="Works Cited")
 
-@app.route("/service")
-def service():
-    return render_template("service.html", app_data=app_data)
-
-
-@app.route("/contact")
-def contact():
-    return render_template("contact.html", app_data=app_data)
+@app.route("/<subject>/<topic>")
+def info(subject, topic):
+    return render_template(f"{subject}/{topic}.html", app_data=app_data, title=f"{topic.capitalize()}")
 
 
 if __name__ == "__main__":
