@@ -3,6 +3,7 @@
 
 from flask import Flask, render_template
 
+
 DEVELOPMENT_ENV = True
 
 app = Flask(__name__)
@@ -26,9 +27,12 @@ def overview():
     return render_template("overview.html", app_data=app_data, title="Overview")
 
 
+
+
 @app.route("/about")
 def about():
     return render_template("about.html", app_data=app_data, title="About")
+
 
 @app.route("/works_cited")
 def works_cited():
@@ -37,7 +41,6 @@ def works_cited():
 @app.route("/<subject>/<topic>")
 def info(subject, topic):
     return render_template(f"{subject}/{topic}.html", app_data=app_data, title=f"{topic.capitalize()}")
-
 
 if __name__ == "__main__":
     app.run(debug=DEVELOPMENT_ENV)
